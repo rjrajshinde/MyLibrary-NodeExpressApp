@@ -1,7 +1,30 @@
-<header>
-    <a href="/">My LIBRARY</a>
-    <nav>
-        <a href="/author">Authors</a>
-        <a href="/author/addAuthor">Add Author</a>
-    </nav>
-</header>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark shadow-sm">
+    <div class="container">
+      <a href="/" class="navbar-brand">MyLibrary</a>
+      <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Author
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/authors">Authors List</a>
+              <a class="dropdown-item" href="/authors/addAuthor">Add Author</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Book
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/books">Books List</a>
+              <a class="dropdown-item" href="/books/addBook">Add Book</a>
+            </div>
+          </li>
+          <!-- <li class="nav-item"><a href="/authors" class="nav-link">Authors</a></li>
+          <li class="nav-item"><a href="/authors/addAuthor" class="nav-link"><button class="button">Add Author</button></a></li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>

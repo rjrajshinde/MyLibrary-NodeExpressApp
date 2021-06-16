@@ -1,0 +1,21 @@
+<h3 class="form-heading text-center">Edit the Author</h3>
+
+<form class="form-group" action="/authors/editAuthor" method="POST">
+    <div class="row">
+        <input type="text" class="form-control" id="name" name="name" value="<%-author.name%>">
+        <input type="hidden" id="_id" name="_id" value="<%-author._id%>">
+    </div>
+    <div class="row">
+        <input type="text" class="form-control" id="address" name="address" value="<%-author.address%>">
+        <!-- <textarea name="address" class="form-control" id="address" cols="30" rows="5" value="<%-author.address%>"></textarea> -->
+    </div>
+    <div class="row">
+        <input type="email" class="form-control col" id="email" name="email" value="<%-author.email%>">
+        <input type="text" class="form-control col" id="contact" name="contact" value="<%-author.contact%>">
+    </div>
+    <div class="row">
+        <input type="submit" class="btn btn-primary col" value="Submit">
+        <!-- <input type="button" class="btn btn-danger col" value="Cancel" href="/author"> -->
+        <a href="/authors" class="btn btn-danger col">Cancel</a>
+    </div>
+</form>

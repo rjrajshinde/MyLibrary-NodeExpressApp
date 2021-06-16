@@ -22,16 +22,21 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Database Connection
-mongoose.connect(process.env.DB_URL,{useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
+mongoose.connect(process.env.DB_URL,{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true}, (err) => {
     if (err)
         throw err;
     else
         console.log("Database Successfully Connected");
 });
 
+
+
 //routes declared here
 app.use('/', require('./routes/index'));
-app.use('/author', require('./routes/author'));
+app.use('/authors', require('./routes/authors'));
+app.use('/books', require('./routes/books'));
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

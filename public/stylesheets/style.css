@@ -1,8 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f2f2;
+  max-width: 1100px;
+  margin: auto;
+  box-sizing: border-box;
+}
+a:hover{
+  text-decoration: none;
 }
 
-a {
-  color: #00B7FF;
+/* navbar css start */
+.navbar-brand{
+  font-size: 25px;
+  letter-spacing:6px;
+  font-weight: 700;
 }
+#navbarDropdown{
+  font-size: 18px;
+}
+/* navbar css end */
+
+/* search author search box css */
+.search-author-form input{
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid black;
+  background-color: #f2f2f2;
+  margin: 0 20px;
+}
+.search-author-form .name{
+  font-size: 20px;
+}
+
+/* main tag css start*/
+.main{
+  margin-top: 100px;
+}
+
+.main .form-heading{
+  font-size: 30px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+/* main tag css end*/
+
+/* table css start */
+.table{
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.table .table-btn{
+  margin: 0;
+  padding: 0 10px;
+}
+/* table css end */
+
+/* form css start */
+.form-group{
+  margin: auto;
+  max-width: 900px;
+  padding: 10px;
+}
+
+.form-control{
+  font-size: 22px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.btn{
+  font-size: 20px;
+  margin: 20px;
+}
+/* form css end */
+
+/* footer css starts */
+.footer{
+  line-height: 30px;
+  background-color: #343a40;
+  color: #ffffff;
+}
+/* footer css ends */
