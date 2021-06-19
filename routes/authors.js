@@ -15,28 +15,35 @@ router.get("/", async (req, res) => {
       data: data,
     });
   } catch (err) {
-    res.render("authors/addAuthor", {
+    res.render("authors/index", {
       data: data,
-      errorMessage: err,
+      errorMessage: 'There is some error in getting authors data',
     });
   }
 });
 
 // route to render the add author page
 router.get("/addAuthor", (req, res) => {
-  res.render("authors/addAuthor");
+  res.render("authors/addAuthor", { author: new authorSchema() });
 });
 
 // route to add the author data
 router.post("/addAuthor", async (req, res) => {
+  const author = new authorSchema({
+    name: req.body.name,
+    address: req.body.address,
+    email: req.body.email,
+    contact: req.body.contact
+  });
   try {
-    let data = req.body;
-    await new authorSchema(data).save();
+    // let data = req.body;
+    // await new authorSchema(data).save();
+    const newAuthor = await author.save();
     res.redirect("/authors");
   } catch (err) {
     res.render("authors/addAuthor", {
-      data: data,
-      errorMessage: err,
+      author: author,
+      errorMessage: 'There is some ERROR in creating Author',
     });
   }
 });
@@ -50,7 +57,7 @@ router.get("/editAuthor/:userId", async (req, res) => {
     });
   } catch (err) {
     res.render("authors/editAuthor", {
-      errorMessage: err
+      errorMessage: 'Error in fetching the Author data'
     });
   }
 });
@@ -62,7 +69,7 @@ router.post("/editAuthor", async (req, res) => {
     res.redirect("/authors");
   } catch (err) {
     res.render("authors/editAuthor", {
-      errorMessage: err
+      errorMessage: 'There is some ERROR in Edit Author'
     });
   }
 });
@@ -74,7 +81,7 @@ router.get('/deleteAuthor/:userId', async(req, res) => {
     res.redirect('/authors');
   } catch (err) {
     res.render("authors/index", {
-      errorMessage: err
+      errorMessage: "There is some ERROR in Deleting Author"
     });
   }
 })

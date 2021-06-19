@@ -18,11 +18,11 @@ a:hover{
 /* navbar css start */
 .navbar-brand{
   font-size: 25px;
-  letter-spacing:6px;
+  letter-spacing:8px;
   font-weight: 700;
 }
 #navbarDropdown{
-  font-size: 18px;
+  font-size: 20px;
 }
 /* navbar css end */
 
@@ -40,7 +40,7 @@ a:hover{
 
 /* main tag css start*/
 .main{
-  margin-top: 100px;
+  margin-top: 140px;
 }
 
 .main .form-heading{
@@ -54,11 +54,13 @@ a:hover{
 .table{
   font-size: 18px;
   margin-top: 20px;
+  margin-bottom: 100px;
 }
 
 .table .table-btn{
   margin: 0;
-  padding: 0 10px;
+  padding: 0 5px;
+  font-size: 18px;
 }
 /* table css end */
 
@@ -79,12 +81,30 @@ a:hover{
   font-size: 20px;
   margin: 20px;
 }
+
+input[type="file"]{
+  display: none;
+
+}
+.filelabel{
+  background-color: #67737e;
+  font-size: 18px;
+  height: 150px;
+  width: 100%;
+  display: flex;
+  color: white;
+  align-items: center;
+  text-align: center;
+  border-radius: 15px;
+}
+
 /* form css end */
 
 /* footer css starts */
 .footer{
-  line-height: 30px;
+  line-height: 60px;
   background-color: #343a40;
   color: #ffffff;
+  font-size: 23px;
 }
 /* footer css ends */
