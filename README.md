@@ -1,5 +1,3 @@
 # MyLibrary_Project
 
-
-Working On it 
-NOt completed Yet
+App is in Development MODE !
