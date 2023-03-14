@@ -1,1 +1,39 @@
-<h1>all the books</h1>
+<!-- <h1>Search Books</h1>
+<form class="search-author-form" action="/books" method="get">
+    <label for=""></label>
+
+</form> -->
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Title</th>
+      <th>Authors Name</th>
+      <th>Publish Date</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.forEach((book) => { %>
+    <tr>
+      <td><%- book.title%></td>
+      <td><%- book.author%></td>
+      <td><%- book.publishDate%></td>
+      <td><%- book.description%></td>
+      <td>
+        <a
+          href="/authors/editAuthor/<%- book._id%>"
+          class="btn btn-warning table-btn"
+          >Edit</a
+        >
+        <a
+          href="/authors/deleteAuthor/<%- book._id%>"
+          class="btn btn-danger table-btn"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

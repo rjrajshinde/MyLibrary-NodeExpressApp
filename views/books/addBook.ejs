@@ -1,29 +1,65 @@
 <h3 class="form-heading text-center">Add the Books</h3>
-<form class="form-group" action="/books/addBook" method="POST" enctype="multipart/form-data">
-    <div class="row">
-        <input type="text" class="form-control col" id="title" name="title" value="<%= book.title %>" placeholder="Enter Book's Title" >
-        <select name="author" class="form-control col" id="author">
-            <option selected value="Select Author">Select Author</option>
-            <% authors.forEach(author=> {%>
-                    <option label="<%= author.name %>" value="<%= author.id %>"></option>
-            <% }) %>
-        </select>
-
-    </div>
-    <div class="row">
-        <input type="date" class="form-control col" id="publishDate" name="publishDate" value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>" placeholder="Enter Publish Date">
-        <input type="number" class="form-control col" id="pageCount" name="pageCount" minlength="1" value="<%= book.pageCount %>" placeholder="Enter PageCount of Book">
-    </div>
-    <div class="row">
-        <section class="col-3 fileupload">
-            <input type="file" class="inputfile" id="cover" name="cover">
-            <label for="cover" class="filelabel mt-2">Choose a Cover Image</label>
-        </section>
-        <textarea class="form-control col" name="description" id="description" cols="40" rows="3" placeholder="Enter Description of Book"><%= book.description %></textarea>
-    </div>
-    <div class="row">
-        <input type="submit" class="btn btn-primary col" value="Submit">
-        <!-- <input type="button" class="btn btn-danger col" value="Cancel" href="/author"> -->
-        <a href="/books" class="btn btn-danger col">Cancel</a>
-    </div>
+<form
+  class="form-group"
+  action="/books/addBook"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <div class="row">
+    <input
+      type="text"
+      class="form-control col"
+      id="title"
+      name="title"
+      value="<%= book.title %>"
+      placeholder="Enter Book's Title"
+    />
+    <select name="author" class="form-control col" id="author">
+      <option selected value="Select Author">Select Author</option>
+      <% authors.forEach(author=> {%>
+      <!-- <option label="<%= author.name %>" value="<%= author.id %>"></option> -->
+      <option label="<%= author.name %>" value="<%= author.name %>"></option>
+      <% }) %>
+    </select>
+  </div>
+  <div class="row">
+    <input
+      type="date"
+      class="form-control col"
+      id="publishDate"
+      name="publishDate"
+      value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>"
+      placeholder="Enter Publish Date"
+    />
+    <input
+      type="number"
+      class="form-control col"
+      id="pageCount"
+      name="pageCount"
+      minlength="1"
+      value="<%= book.pageCount %>"
+      placeholder="Enter PageCount of Book"
+    />
+  </div>
+  <div class="row">
+    <section class="col-3 fileupload">
+      <input type="file" class="inputfile" id="cover" name="cover" />
+      <label for="cover" class="filelabel mt-2">Choose a Cover Image</label>
+    </section>
+    <textarea
+      class="form-control col"
+      name="description"
+      id="description"
+      cols="40"
+      rows="3"
+      placeholder="Enter Description of Book"
+    >
+<%= book.description %></textarea
+    >
+  </div>
+  <div class="row">
+    <input type="submit" class="btn btn-primary col" value="Submit" />
+    <!-- <input type="button" class="btn btn-danger col" value="Cancel" href="/author"> -->
+    <a href="/books" class="btn btn-danger col">Cancel</a>
+  </div>
 </form>
