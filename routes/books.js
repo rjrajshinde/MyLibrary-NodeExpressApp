@@ -20,45 +20,82 @@ const upload = multer({
 //   res.render("books/index");
 // });
 
+//! ALL BOOKS ROUTE
+// router.get("/", async (req, res) => {
+//   let searchOptions = {};
+//   if (req.query.title != null && req.query.title !== "") {
+//     // searchOptions.title = new
+//   }
+//   try {
+//     let data = await bookSchema.find();
+//     // data.forEach(async (ele) => {
+//     //   let authorID = ele.author;
+//     //   let authorName = await authorSchema.findById(authorID);
+//     //   console.log(ele.author);
+//     //   console.log("------------");
+//     //   ele.author = authorName;
+//     //   console.log(ele.author);
+//     //   console.log(";;;;;;;;;;;;;;;;;;;;;;;;;");
+//     //   console.log(ele);
+//     //   // console.log(
+//     //   //   "----------------",
+//     //   //   authorID,
+//     //   //   "----------------",
+//     //   //   authorName.name
+//     //   // );
+//     // });
+//     // data.forEach(async (ele) => {
+//     //   let authorID = ele.author;
+//     //   let authorName = await authorSchema.findById(authorID);
+//     //   ele[author] = authorName;
+//     //   console.log(
+//     //     "----------------",
+//     //     authorID,
+//     //     "----------------",
+//     //     authorName.name
+//     //   );
+//     // });
+//     // console.log(
+//     //   "----------------",
+//     //   authorID,
+//     //   "----------------",
+//     //   authorName.name
+//     // );
+//     console.log("8888888888888888888888888888888");
+//     console.log(data);
+//     res.render("books/index", { data: data });
+//   } catch (err) {
+//     res.render("books/index", {
+//       data: data,
+//       errorMessage:
+//         "There is something wrong with accessing books Data. Please Contact Support.",
+//     });
+//   }
+// });
+
 router.get("/", async (req, res) => {
+  // let searchOptions = {};
+  // if (req.query.title != null && req.query.title !== "") {
+  //   searchOptions.title = new RegExp(req.query.title, "i");
+  // }
+  let query = bookSchema.find();
+  if (req.query.title != null && req.query.title !== "") {
+    query = query.regex("title", new RegExp(req.query.title, "i"));
+  }
+
+  if (req.query.publishedAfter != null && req.query.publishedAfter !== "") {
+    query = query.gte("publishDate", req.query.publishedAfter);
+  }
+
+  if (req.query.publishedBefore != null && req.query.publishedBefore !== "") {
+    query = query.lte("publishDate", req.query.publishedBefore);
+  }
+
   try {
-    let data = await bookSchema.find();
-    // data.forEach(async (ele) => {
-    //   let authorID = ele.author;
-    //   let authorName = await authorSchema.findById(authorID);
-    //   console.log(ele.author);
-    //   console.log("------------");
-    //   ele.author = authorName;
-    //   console.log(ele.author);
-    //   console.log(";;;;;;;;;;;;;;;;;;;;;;;;;");
-    //   console.log(ele);
-    //   // console.log(
-    //   //   "----------------",
-    //   //   authorID,
-    //   //   "----------------",
-    //   //   authorName.name
-    //   // );
-    // });
-    // data.forEach(async (ele) => {
-    //   let authorID = ele.author;
-    //   let authorName = await authorSchema.findById(authorID);
-    //   ele[author] = authorName;
-    //   console.log(
-    //     "----------------",
-    //     authorID,
-    //     "----------------",
-    //     authorName.name
-    //   );
-    // });
-    // console.log(
-    //   "----------------",
-    //   authorID,
-    //   "----------------",
-    //   authorName.name
-    // );
-    console.log("8888888888888888888888888888888");
+    // let data = await bookSchema.find(searchOptions);
+    const data = await query.exec();
     console.log(data);
-    res.render("books/index", { data: data });
+    res.render("books/index", { data: data, searchOptions: req.query });
   } catch (err) {
     res.render("books/index", {
       data: data,
@@ -68,13 +105,13 @@ router.get("/", async (req, res) => {
   }
 });
 
-// route to render the add book page
+//! ROUTE TO RENDER THE ADD BOOK
 router.get("/addBook", async (req, res) => {
   //fucntion for reder the page with handling the error
   renderNewPage(res, new bookSchema());
 });
 
-// route to add the book data
+//! ROUTE TO ADD BOOK DATA
 router.post("/addBook", upload.single("cover"), async (req, res) => {
   const fileName = req.file != null ? req.file.filename : null;
   const book = new bookSchema({
@@ -91,6 +128,7 @@ router.post("/addBook", upload.single("cover"), async (req, res) => {
     // res.redirect(`books/${newBook.id}`)
     res.redirect("/books");
   } catch {
+    if (book.coverImageName != null) removeBookCover(book.coverImageName);
     renderNewPage(res, book, true);
   }
 });
@@ -109,7 +147,7 @@ router.post("/addBook", upload.single("cover"), async (req, res) => {
 
 // })
 
-//fucntion for reder the page with handling the error
+//! FUNCTION FOR RENDER THE PAGE WITH HANDLING THE ERROR
 async function renderNewPage(res, book, hasError = false) {
   try {
     const authors = await authorSchema.find({});
@@ -119,10 +157,18 @@ async function renderNewPage(res, book, hasError = false) {
     };
     if (hasError)
       params.errorMessage =
-        "There is Some Error in Creating bookSchema! Check Whether you fill the information Correctly";
+        "There is Some Error in Creating Book! Check Whether have you fill the information Correctly";
     res.render("books/addBook", params);
   } catch {
     res.redirect("/books");
   }
 }
+
+//! FUNCTION TO REMOVE BOOK COVER IMAGE FROM UPLOADS WHEN IF THERE IS SOME ERROR IN SAVING BOOK DATA AND COVER PAGE IS SAVED BEFORE THAT
+function removeBookCover(fileName) {
+  fs.unlink(path.join(uploadPath, fileName), (err) => {
+    if (err) console.error(err);
+  });
+}
+
 module.exports = router;

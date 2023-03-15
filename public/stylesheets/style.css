@@ -1,49 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
 
 body {
   margin: 0;
   padding: 0;
   font-weight: 500;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #f2f2f2;
   max-width: 1100px;
   margin: auto;
   box-sizing: border-box;
 }
-a:hover{
+a:hover {
   text-decoration: none;
 }
 
 /* navbar css start */
-.navbar-brand{
+.navbar-brand {
   font-size: 25px;
-  letter-spacing:8px;
+  letter-spacing: 8px;
   font-weight: 700;
 }
-#navbarDropdown{
+#navbarDropdown {
   font-size: 20px;
 }
 /* navbar css end */
 
 /* search author search box css */
-.search-author-form input{
+.search-author-form input {
   outline: none;
   border: 0;
   border-bottom: 1px solid black;
   background-color: #f2f2f2;
   margin: 0 20px;
 }
-.search-author-form .name{
+.search-author-form .name {
+  font-size: 20px;
+}
+
+/* search book search box css */
+.search-book-form input {
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid black;
+  background-color: #f2f2f2;
+  margin: 0 20px;
+}
+.search-book-form .title,
+.publishedAfter,
+.publishedBefore {
   font-size: 20px;
 }
 
 /* main tag css start*/
-.main{
+.main {
   margin-top: 140px;
 }
 
-.main .form-heading{
+.main .form-heading {
   font-size: 30px;
   text-transform: capitalize;
   font-weight: 600;
@@ -51,13 +65,13 @@ a:hover{
 /* main tag css end*/
 
 /* table css start */
-.table{
+.table {
   font-size: 18px;
   margin-top: 20px;
   margin-bottom: 100px;
 }
 
-.table .table-btn{
+.table .table-btn {
   margin: 0;
   padding: 0 5px;
   font-size: 18px;
@@ -65,28 +79,27 @@ a:hover{
 /* table css end */
 
 /* form css start */
-.form-group{
+.form-group {
   margin: auto;
   max-width: 900px;
   padding: 10px;
 }
 
-.form-control{
+.form-control {
   font-size: 22px;
   padding: 10px;
   margin: 10px;
 }
 
-.btn{
+.btn {
   font-size: 20px;
   margin: 20px;
 }
 
-input[type="file"]{
+input[type="file"] {
   display: none;
-
 }
-.filelabel{
+.filelabel {
   background-color: #67737e;
   font-size: 18px;
   height: 150px;
@@ -101,7 +114,7 @@ input[type="file"]{
 /* form css end */
 
 /* footer css starts */
-.footer{
+.footer {
   line-height: 60px;
   background-color: #343a40;
   color: #ffffff;
