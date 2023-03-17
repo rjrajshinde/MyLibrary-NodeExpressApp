@@ -71,6 +71,10 @@ a:hover {
   margin-bottom: 100px;
 }
 
+.table tbody td {
+  font-weight: 600;
+}
+
 .table .table-btn {
   margin: 0;
   padding: 0 5px;

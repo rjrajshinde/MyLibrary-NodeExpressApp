@@ -15,6 +15,7 @@ const bookSchema = new mongoose.Schema({
     required: true,
     ref: "authors",
   },
+  authorName: { type: String, required: true },
   // author: {
   //   type: String,
   //   required: true,

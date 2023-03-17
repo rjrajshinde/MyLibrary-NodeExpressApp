@@ -36,6 +36,7 @@
     <tr>
       <th>Image</th>
       <th>Title</th>
+      <!-- <th>Authors ID</th> -->
       <th>Authors Name</th>
       <th>Publish Date</th>
       <th>Description</th>
@@ -47,7 +48,8 @@
     <tr>
       <td><img height="150" width="250" src="<%= book.coverImagePath %>" /></td>
       <td><%- book.title%></td>
-      <td><%- book.author%></td>
+      <!-- <td><%- book.author%></td> -->
+      <td><%- book.authorName%></td>
       <td><%- book.publishDate%></td>
       <td><%- book.description%></td>
       <td>

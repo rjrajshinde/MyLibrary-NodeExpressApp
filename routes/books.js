@@ -94,7 +94,6 @@ router.get("/", async (req, res) => {
   try {
     // let data = await bookSchema.find(searchOptions);
     const data = await query.exec();
-    console.log(data);
     res.render("books/index", { data: data, searchOptions: req.query });
   } catch (err) {
     res.render("books/index", {
@@ -114,6 +113,14 @@ router.get("/addBook", async (req, res) => {
 //! ROUTE TO ADD BOOK DATA
 router.post("/addBook", upload.single("cover"), async (req, res) => {
   const fileName = req.file != null ? req.file.filename : null;
+  const authorID = req.body.author;
+  var authorName;
+  await authorSchema.findById(authorID, (err, result) => {
+    if (err) console.log(err);
+    console.log("result---", result);
+    authorName = result.name;
+  });
+  console.log(authorID, "----------------", authorName);
   const book = new bookSchema({
     title: req.body.title,
     author: req.body.author,
@@ -121,6 +128,7 @@ router.post("/addBook", upload.single("cover"), async (req, res) => {
     pageCount: req.body.pageCount,
     coverImageName: fileName,
     description: req.body.description,
+    authorName: authorName,
   });
   // console.log(book);
   try {
