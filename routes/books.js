@@ -1,19 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const bookSchema = require("../model/bookSchema");
 const authorSchema = require("../model/authorSchema");
+const moment = require("moment");
 const uploadPath = path.join("public", bookSchema.coverImageStorePath);
 const imageMimeTypes = ["image/jpeg", "image/jpg", "image/png", "images/gif"];
 
-const upload = multer({
-  dest: uploadPath,
-  fileFilter: (req, file, callback) => {
-    callback(null, imageMimeTypes.includes(file.mimetype));
-  },
-});
+//* FILE UPLOAD USING MULTER
+// const multer = require("multer");
+// const upload = multer({
+//   dest: uploadPath,
+//   fileFilter: (req, file, callback) => {
+//     callback(null, imageMimeTypes.includes(file.mimetype));
+//   },
+// });
 
 //route to get all books
 // router.get("/", async (req, res) => {
@@ -74,10 +76,6 @@ const upload = multer({
 // });
 
 router.get("/", async (req, res) => {
-  // let searchOptions = {};
-  // if (req.query.title != null && req.query.title !== "") {
-  //   searchOptions.title = new RegExp(req.query.title, "i");
-  // }
   let query = bookSchema.find();
   if (req.query.title != null && req.query.title !== "") {
     query = query.regex("title", new RegExp(req.query.title, "i"));
@@ -92,9 +90,12 @@ router.get("/", async (req, res) => {
   }
 
   try {
-    // let data = await bookSchema.find(searchOptions);
     const data = await query.exec();
-    res.render("books/index", { data: data, searchOptions: req.query });
+    res.render("books/index", {
+      data: data,
+      searchOptions: req.query,
+      moment: moment,
+    });
   } catch (err) {
     res.render("books/index", {
       data: data,
@@ -111,35 +112,34 @@ router.get("/addBook", async (req, res) => {
 });
 
 //! ROUTE TO ADD BOOK DATA
-router.post("/addBook", upload.single("cover"), async (req, res) => {
-  const fileName = req.file != null ? req.file.filename : null;
+router.post("/addBook", async (req, res) => {
+  // const fileName = req.file != null ? req.file.filename : null;
   const authorID = req.body.author;
   var authorName;
   await authorSchema.findById(authorID, (err, result) => {
     if (err) console.log(err);
-    console.log("result---", result);
     authorName = result.name;
   });
-  console.log(authorID, "----------------", authorName);
+  console.log(req.body.cover);
   const book = new bookSchema({
     title: req.body.title,
     author: req.body.author,
     publishDate: new Date(req.body.publishDate),
     pageCount: req.body.pageCount,
-    coverImageName: fileName,
+    // coverImageName: fileName,
     description: req.body.description,
     authorName: authorName,
   });
-  // console.log(book);
+
   try {
     const newBook = await book.save();
-    // res.redirect(`books/${newBook.id}`)
     res.redirect("/books");
   } catch {
-    if (book.coverImageName != null) removeBookCover(book.coverImageName);
+    // if (book.coverImageName != null) removeBookCover(book.coverImageName);
     renderNewPage(res, book, true);
   }
 });
+
 // //route to render the edit book page with sending the id of book via url
 // router.get("/editBook/:userId", async (req, res) => {
 
@@ -173,10 +173,19 @@ async function renderNewPage(res, book, hasError = false) {
 }
 
 //! FUNCTION TO REMOVE BOOK COVER IMAGE FROM UPLOADS WHEN IF THERE IS SOME ERROR IN SAVING BOOK DATA AND COVER PAGE IS SAVED BEFORE THAT
-function removeBookCover(fileName) {
-  fs.unlink(path.join(uploadPath, fileName), (err) => {
-    if (err) console.error(err);
-  });
+// function removeBookCover(fileName) {
+//   fs.unlink(path.join(uploadPath, fileName), (err) => {
+//     if (err) console.error(err);
+//   });
+// }
+
+function saveCover(book, coverEncoded) {
+  if (coverEncoded == null) return;
+  const cover = JSON.parse(coverEncoded);
+  if (cover != null && imageMimeTypes.includes(cover.type)) {
+    book.coverImage = new Buffer.from(cover.data, "base64");
+    book.coverImageType = cover.type;
+  }
 }
 
 module.exports = router;
