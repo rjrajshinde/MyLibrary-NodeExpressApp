@@ -120,7 +120,6 @@ router.post("/addBook", async (req, res) => {
     if (err) console.log(err);
     authorName = result.name;
   });
-  console.log(req.body.cover);
   const book = new bookSchema({
     title: req.body.title,
     author: req.body.author,
@@ -130,7 +129,7 @@ router.post("/addBook", async (req, res) => {
     description: req.body.description,
     authorName: authorName,
   });
-
+  saveCover(book, req.body.cover);
   try {
     const newBook = await book.save();
     res.redirect("/books");
