@@ -1,19 +1,49 @@
-<h3 class="form-heading text-center">Add the Author</h3>
-<form class="form-group" action="/authors/addAuthor" method="POST" >
-    <div class="row">
-        <input type="text" class="form-control" id="name" name="name" value="<%= author.name %>" placeholder="Enter Authors name" >
-    </div>
-    <div class="row">
-        <input type="text" class="form-control" id="address" name="address" value="<%= author.address %>" placeholder="Enter Authors Address" >
-        <!-- <textarea name="address" class="form-control" id="address" cols="30" rows="5" placeholder="Enter Authos Address"></textarea> -->
-    </div>
-    <div class="row">
-        <input type="email" class="form-control col" id="email" name="email" value="<%= author.email %>" placeholder="Enter Authors Email" >
-        <input type="text" class="form-control col" id="contact" name="contact" value="<%= author.contact %>" maxlength="10" minlength="10" placeholder="Enter Authors contact no" >
-    </div>
-    <div class="row">
-        <input type="submit" class="btn btn-primary col" value="Submit">
-        <!-- <input type="button" class="btn btn-danger col" value="Cancel" href="/author"> -->
-        <a href="/authors" class="btn btn-danger col">Cancel</a>
-    </div>
+<h3 class="form-heading text-center addAuthor">Add the Author</h3>
+<form class="form-group" action="/authors/addAuthor" method="POST">
+  <div class="row">
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      value="<%= author.name %>"
+      placeholder="Enter Authors name"
+    />
+  </div>
+  <div class="row">
+    <input
+      type="text"
+      class="form-control"
+      id="address"
+      name="address"
+      value="<%= author.address %>"
+      placeholder="Enter Authors Address"
+    />
+    <!-- <textarea name="address" class="form-control" id="address" cols="30" rows="5" placeholder="Enter Authos Address"></textarea> -->
+  </div>
+  <div class="row">
+    <input
+      type="email"
+      class="form-control col"
+      id="email"
+      name="email"
+      value="<%= author.email %>"
+      placeholder="Enter Authors Email"
+    />
+    <input
+      type="text"
+      class="form-control col"
+      id="contact"
+      name="contact"
+      value="<%= author.contact %>"
+      maxlength="10"
+      minlength="10"
+      placeholder="Enter Authors contact no"
+    />
+  </div>
+  <div class="row">
+    <input type="submit" class="btn btn-primary col" value="Submit" />
+    <!-- <input type="button" class="btn btn-danger col" value="Cancel" href="/author"> -->
+    <a href="/authors" class="btn btn-danger col">Cancel</a>
+  </div>
 </form>

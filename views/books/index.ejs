@@ -1,42 +1,54 @@
 <h1>Search Books</h1>
 <form class="search-book-form" action="/books" method="GET">
-  <label for="title" class="title">Title :</label>
-  <input
-    type="text"
-    name="title"
-    id="title"
-    value="<%= searchOptions.title %>"
-  />
+  <div class="row">
+    <div class="col-3">
+      <label for="title" class="title">Title:</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        value="<%= searchOptions.title %>"
+      />
+    </div>
 
-  <label for="publishedAfter" class="publishedAfter">Published After :</label>
-  <input
-    type="date"
-    name="publishedAfter"
-    id="publishedAfter"
-    value="<%= searchOptions.publishedAfter %>"
-  />
+    <div class="col-4">
+      <label for="publishedAfter" class="publishedAfter"
+        >Published After:</label
+      >
+      <input
+        type="date"
+        name="publishedAfter"
+        id="publishedAfter"
+        value="<%= searchOptions.publishedAfter %>"
+      />
+    </div>
 
-  <label for="publishedBefore" class="publishedBefore">
-    Published Before :</label
-  >
-  <input
-    type="date"
-    name="publishedBefore"
-    id="publishedBefore"
-    value="<%= searchOptions.publishedBefore %>"
-  />
+    <div class="col-4">
+      <label for="publishedBefore" class="publishedBefore">
+        Published Before:</label
+      >
+      <input
+        type="date"
+        name="publishedBefore"
+        id="publishedBefore"
+        value="<%= searchOptions.publishedBefore %>"
+      />
+    </div>
 
-  <button type="submit" class="btn-primary px-4">
-    <i class="fas fa-search"></i>
-  </button>
+    <div class="col-1">
+      <button type="submit" class="btn-primary px-4">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
 </form>
-
+<!-- 
 <table class="table">
   <thead class="thead-dark">
     <tr>
       <th>Image</th>
       <th>Title</th>
-      <!-- <th>Authors ID</th> -->
+      <th>Authors ID</th> 
       <th>Authors Name</th>
       <th>Publish Date</th>
       <th>Description</th>
@@ -46,9 +58,9 @@
   <tbody>
     <% data.forEach((book) => { %>
     <tr>
-      <td><img height="150" width="250" src="<%= book.coverImagePath %>" /></td>
+      <td><img height="200" width="150" src="<%= book.coverImagePath %>" /></td>
       <td><%- book.title%></td>
-      <!-- <td><%- book.author%></td> -->
+      <td><%- book.author%></td> 
       <td><%- book.authorName%></td>
       <td><%- book.publishDate%></td>
       <td><%- book.description%></td>
@@ -67,4 +79,22 @@
     </tr>
     <% }) %>
   </tbody>
-</table>
+</table> -->
+
+<div class="row mt-4 bookCards">
+  <% data.forEach((book) => { %>
+  <div class="col-6 mt-4">
+    <div class="card">
+      <img src="<%= book.coverImagePath %>" class="cardImg" alt="Book Cover" />
+      <div class="card-body img-fluid">
+        <div class="card-title">Title : <%- book.title%></div>
+        <h3 class="card-author-name">Author : <%- book.authorName%></h3>
+        <p class="card-text text-wrap">Description : <%- book.description%></p>
+        <div class="card-date text-muted text-right">
+          Publish Date : <%- moment(book.publishDate).format('MMMM d, YYYY');%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>

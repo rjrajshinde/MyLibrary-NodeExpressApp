@@ -1,10 +1,6 @@
 <h3 class="form-heading text-center">Add the Books</h3>
-<form
-  class="form-group"
-  action="/books/addBook"
-  method="POST"
-  enctype="multipart/form-data"
->
+<form class="form-group mb-4" action="/books/addBook" method="POST">
+  <!--  enctype="multipart/form-data" -->
   <div class="row">
     <input
       type="text"
@@ -42,9 +38,12 @@
     />
   </div>
   <div class="row">
-    <section class="col-3 fileupload">
-      <input type="file" class="inputfile" id="cover" name="cover" />
-      <label for="cover" class="filelabel mt-2">Choose a Cover Image</label>
+    <section class="col-3">
+      <!-- fileupload -->
+      <input type="file" class="filepond" id="cover" name="cover" />
+      <!-- inputfile -->
+      <!-- <label for="cover" class="mt-2">Choose a Cover Image</label> -->
+      <!-- filelabel -->
     </section>
     <textarea
       class="form-control col"
