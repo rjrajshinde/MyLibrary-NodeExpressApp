@@ -17,7 +17,8 @@ router.get("/", async (req, res) => {
   } catch (err) {
     res.render("authors/index", {
       data: data,
-      errorMessage: 'There is some error in getting authors data',
+      errorMessage:
+        "There is something wrong with accessing books Data. Please Contact Support.",
     });
   }
 });
@@ -33,7 +34,7 @@ router.post("/addAuthor", async (req, res) => {
     name: req.body.name,
     address: req.body.address,
     email: req.body.email,
-    contact: req.body.contact
+    contact: req.body.contact,
   });
   try {
     // let data = req.body;
@@ -43,7 +44,7 @@ router.post("/addAuthor", async (req, res) => {
   } catch (err) {
     res.render("authors/addAuthor", {
       author: author,
-      errorMessage: 'There is some ERROR in creating Author',
+      errorMessage: "There is some ERROR in creating Author",
     });
   }
 });
@@ -53,36 +54,39 @@ router.get("/editAuthor/:userId", async (req, res) => {
   try {
     let author = await authorSchema.findOne({ _id: req.params.userId });
     res.render("authors/editAuthor", {
-      author: author
+      author: author,
     });
   } catch (err) {
     res.render("authors/editAuthor", {
-      errorMessage: 'Error in fetching the Author data'
+      errorMessage: "Error in fetching the Author data",
     });
   }
 });
 
-//route to edit the author 
+//route to edit the author
 router.post("/editAuthor", async (req, res) => {
   try {
-    await authorSchema.findOneAndUpdate({ _id: req.body._id }, { $set: req.body });
+    await authorSchema.findOneAndUpdate(
+      { _id: req.body._id },
+      { $set: req.body }
+    );
     res.redirect("/authors");
   } catch (err) {
     res.render("authors/editAuthor", {
-      errorMessage: 'There is some ERROR in Edit Author'
+      errorMessage: "There is some ERROR in Edit Author",
     });
   }
 });
 
 //route to delete the author
-router.get('/deleteAuthor/:userId', async(req, res) => {
+router.get("/deleteAuthor/:userId", async (req, res) => {
   try {
     await authorSchema.findOneAndDelete({ _id: req.params.userId });
-    res.redirect('/authors');
+    res.redirect("/authors");
   } catch (err) {
     res.render("authors/index", {
-      errorMessage: "There is some ERROR in Deleting Author"
+      errorMessage: "There is some ERROR in Deleting Author",
     });
   }
-})
+});
 module.exports = router;

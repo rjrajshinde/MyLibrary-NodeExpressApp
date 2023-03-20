@@ -1,32 +1,47 @@
 <h1>Search Authors</h1>
 <form class="search-author-form" action="/authors" method="get">
-    <label for="name" class="name">Name:</label>
-    <input type="search" name="name" id="name" value="<%= searchOptions.name %>">
-    <button type="submit" class="btn-primary px-4"><i class="fas fa-search"></i></button>
+  <label for="name" class="name">Name :</label>
+  <input
+    type="search"
+    name="name"
+    id="name"
+    value="<%= searchOptions.name %>"
+  />
+  <button type="submit" class="btn-primary px-4">
+    <i class="fas fa-search"></i>
+  </button>
 </form>
 
-    <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Contact</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-            <% data.forEach((author) => { %>
-          <tr>
-            <td><%- author.name%></td>
-            <td><%- author.email%></td>
-            <td><%- author.address%></td>
-            <td><%- author.contact%></td>
-            <td>
-              <a href="/authors/editAuthor/<%- author._id%>" class="btn btn-warning table-btn">Edit</a>
-              <a href="/authors/deleteAuthor/<%- author._id%>" class="btn btn-danger table-btn">Delete</a>
-            </td>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Contact</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.forEach((author) => { %>
+    <tr>
+      <td><%- author.name%></td>
+      <td><%- author.email%></td>
+      <td><%- author.address%></td>
+      <td><%- author.contact%></td>
+      <td>
+        <a
+          href="/authors/editAuthor/<%- author._id%>"
+          class="btn btn-warning table-btn"
+          >Edit</a
+        >
+        <a
+          href="/authors/deleteAuthor/<%- author._id%>"
+          class="btn btn-danger table-btn"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

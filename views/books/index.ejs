@@ -1,1 +1,70 @@
-<h1>all the books</h1>
+<h1>Search Books</h1>
+<form class="search-book-form" action="/books" method="GET">
+  <label for="title" class="title">Title :</label>
+  <input
+    type="text"
+    name="title"
+    id="title"
+    value="<%= searchOptions.title %>"
+  />
+
+  <label for="publishedAfter" class="publishedAfter">Published After :</label>
+  <input
+    type="date"
+    name="publishedAfter"
+    id="publishedAfter"
+    value="<%= searchOptions.publishedAfter %>"
+  />
+
+  <label for="publishedBefore" class="publishedBefore">
+    Published Before :</label
+  >
+  <input
+    type="date"
+    name="publishedBefore"
+    id="publishedBefore"
+    value="<%= searchOptions.publishedBefore %>"
+  />
+
+  <button type="submit" class="btn-primary px-4">
+    <i class="fas fa-search"></i>
+  </button>
+</form>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <!-- <th>Authors ID</th> -->
+      <th>Authors Name</th>
+      <th>Publish Date</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.forEach((book) => { %>
+    <tr>
+      <td><img height="150" width="250" src="<%= book.coverImagePath %>" /></td>
+      <td><%- book.title%></td>
+      <!-- <td><%- book.author%></td> -->
+      <td><%- book.authorName%></td>
+      <td><%- book.publishDate%></td>
+      <td><%- book.description%></td>
+      <td>
+        <a
+          href="/authors/editAuthor/<%- book._id%>"
+          class="btn btn-warning table-btn"
+          >Edit</a
+        >
+        <a
+          href="/authors/deleteAuthor/<%- book._id%>"
+          class="btn btn-danger table-btn"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
