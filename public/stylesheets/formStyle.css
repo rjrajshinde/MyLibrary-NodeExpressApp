@@ -1,0 +1,33 @@
+/* form css start */
+.form-heading {
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.form-group {
+  margin: auto;
+  max-width: 70%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-control {
+  font-size: 1.2em;
+  padding: 0.6rem 1rem;
+  margin: 0.6rem;
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+.btn {
+  font-size: 1.2rem;
+  margin: 1.2rem;
+}
+
+.form-group select {
+  padding: 0 1rem;
+}
+/* form css end */

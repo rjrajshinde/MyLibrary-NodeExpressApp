@@ -1,0 +1,31 @@
+/* search author search box css */
+.search-author-form input {
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid black;
+  background-color: #f2f2f2;
+  margin: 0 1.2rem;
+}
+
+.search-author-form .name {
+  font-size: 1.3rem;
+}
+
+/* search book search box css */
+.search-book-form input {
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid black;
+  background-color: #f2f2f2;
+  margin: 0 0;
+}
+
+.search-book-form #title {
+  width: 13rem;
+}
+
+.search-book-form .title,
+.publishedAfter,
+.publishedBefore {
+  font-size: 1.2rem;
+}

@@ -1,0 +1,32 @@
+/* cards on books index page css starts */
+.bookCards {
+  margin-bottom: 9rem;
+  width: 100%;
+}
+
+.bookCards .card {
+  display: flex;
+  font-size: 1rem;
+  flex-direction: row;
+  /* gap: -30px; */
+}
+
+.bookCards .card .cardImg {
+  width: 200;
+  height: 250px;
+}
+
+.bookCards .card .card-title {
+  font-size: 1.4em;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.bookCards .card .card-author-name {
+  font-size: 1.1em;
+}
+
+.bookCards .card .card-text {
+  font-size: 0.8em;
+}
+/* cards on books index page css ends */

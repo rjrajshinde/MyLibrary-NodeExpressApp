@@ -14,7 +14,6 @@
       <option selected value="Select Author">Select Author</option>
       <% authors.forEach(author=> {%>
       <option label="<%= author.name %>" value="<%= author.id %>"></option>
-      <!-- <option label="<%= author.name %>" value="<%= author.name %>"></option> -->
       <% }) %>
     </select>
   </div>
@@ -39,11 +38,7 @@
   </div>
   <div class="row">
     <section class="col-3">
-      <!-- fileupload -->
       <input type="file" class="filepond" id="cover" name="cover" />
-      <!-- inputfile -->
-      <!-- <label for="cover" class="mt-2">Choose a Cover Image</label> -->
-      <!-- filelabel -->
     </section>
     <textarea
       class="form-control col"

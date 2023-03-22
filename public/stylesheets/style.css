@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
 
+@import "./filepondStyle.css";
+@import "./searchFormStyle.css";
+@import "./formStyle.css";
+@import "./bookCardsStyle.css";
+
 :root {
   font-size: 16px;
 }
@@ -20,6 +25,10 @@ a:hover {
   text-decoration: none;
 }
 
+.main {
+  margin-top: 8rem;
+}
+
 /* navbar css start */
 .navbar-brand {
   font-size: 1.8rem;
@@ -31,45 +40,6 @@ a:hover {
   font-size: 1rem;
 }
 /* navbar css end */
-
-/* search author search box css */
-.search-author-form input {
-  outline: none;
-  border: 0;
-  border-bottom: 1px solid black;
-  background-color: #f2f2f2;
-  margin: 0 1.2rem;
-}
-
-.search-author-form .name {
-  font-size: 1.3rem;
-}
-
-/* search book search box css */
-.search-book-form input {
-  outline: none;
-  border: 0;
-  border-bottom: 1px solid black;
-  background-color: #f2f2f2;
-  margin: 0 0;
-}
-
-.search-book-form #title {
-  width: 13rem;
-}
-
-.search-book-form .title,
-.publishedAfter,
-.publishedBefore {
-  font-size: 1.2rem;
-}
-
-/* main tag css start*/
-.main {
-  margin-top: 8rem;
-}
-
-/* main tag css end*/
 
 /* table css start */
 .table {
@@ -84,90 +54,6 @@ a:hover {
   font-size: 1.1rem;
 }
 /* table css end */
-
-/* form css start */
-.form-heading {
-  font-size: 1.8rem;
-  text-transform: capitalize;
-  font-weight: 600;
-}
-
-.form-group {
-  margin: auto;
-  max-width: 70%;
-  padding: 10px;
-  font-size: 16px;
-}
-
-.form-control {
-  font-size: 1.2em;
-  padding: 0.6rem 1rem;
-  margin: 0.6rem;
-}
-
-.form-group textarea {
-  resize: none;
-}
-
-.btn {
-  font-size: 1.2rem;
-  margin: 1.2rem;
-}
-
-input[type="file"] {
-  /* display: none; */
-}
-
-.form-group select {
-  padding: 0 1rem;
-}
-
-.filelabel {
-  background-color: #67737e;
-  font-size: 1rem;
-  /* height: 150px; */
-  width: 100%;
-  display: flex;
-  color: white;
-  align-items: center;
-  text-align: center;
-  border-radius: 15px;
-}
-
-/* form css end */
-
-/* cards on books index page css starts */
-.bookCards {
-  margin-bottom: 9rem;
-  width: 100%;
-}
-
-.bookCards .card {
-  display: flex;
-  font-size: 1rem;
-  flex-direction: row;
-  /* gap: -30px; */
-}
-
-.bookCards .card .cardImg {
-  width: 200;
-  height: 250px;
-}
-
-.bookCards .card .card-title {
-  font-size: 1.4em;
-  font-weight: 800;
-  font-style: italic;
-}
-
-.bookCards .card .card-author-name {
-  font-size: 1.1em;
-}
-
-.bookCards .card .card-text {
-  font-size: 0.8em;
-}
-/* cards on books index page css ends */
 
 /* footer css starts */
 .footer {

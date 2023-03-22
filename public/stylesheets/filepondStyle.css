@@ -1,0 +1,16 @@
+.filepond {
+  margin-top: 0.6rem;
+  cursor: pointer;
+}
+
+.filepond--drop-label {
+  color: #555;
+}
+
+.filepond--panel-root {
+  background-color: #d8dadb;
+}
+
+.filepond--credits {
+  display: none !important;
+}
